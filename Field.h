@@ -28,37 +28,37 @@ class Field{
 			delete printer;
 		}
 
-		virtual bool checkVictory(Point selectted_point) = 0;
-		virtual int evaluteBan(Point selectted_point) = 0;
+		virtual bool checkVictory(Point selected_point) = 0;
+		virtual int evaluteBan(Point selected_point) = 0;
 
 		void print(){
 			(*printer)(ban);
 		}
 
-		void setChip(Point selectted_point, ChipType type){
-			ban[selectted_point.x][selectted_point.y] = Chip{type};
+		virtual void setChip(Point selected_point, ChipType type){
+			ban[selected_point.x][selected_point.y] = Chip{type};
 		}
 
-		Chip getChip(Point selectted_point){
-			return ban[selectted_point.x][selectted_point.y] ;
+		Chip getChip(Point selected_point){
+			return ban[selected_point.x][selected_point.y] ;
 		}
 
-		bool isPointInBan(Point selectted_point)const{
-			return (selectted_point.x < size && selectted_point.y < size && selectted_point.x >= 0 && selectted_point.y >= 0);
-		}
-
-
-		bool canPutChip(Point selectted_point)const{
-			return (ban[selectted_point.x][selectted_point.y] == Chip{ChipType::none} ) && isPointInBan(selectted_point);
+		bool isPointInBan(Point selected_point)const{
+			return (selected_point.x < size && selected_point.y < size && selected_point.x >= 0 && selected_point.y >= 0);
 		}
 
 
-		int checkLinkingNumber(Point selectted_point,Point check_direction){
+		virtual bool canPutChip(Point selected_point)const{
+			return (ban[selected_point.x][selected_point.y] == Chip{ChipType::none} ) && isPointInBan(selected_point);
+		}
+
+
+		int checkLinkingNumber(Point selected_point,Point check_direction){
 
 			int link_count = 0;
-			const Chip selecting_chip = ban[selectted_point.x][selectted_point.y];
+			const Chip selecting_chip = ban[selected_point.x][selected_point.y];
 			
-			Point checking_point = selectted_point;
+			Point checking_point = selected_point;
 			while(1){
 				link_count++;
 				

@@ -21,16 +21,15 @@ int main(){
 		Point selectted_point;
 
 		selectted_point = player1->selectMove(f);
-
-	//	cout<<"k0"<<endl;
+		//このselectted_pointはおける位置である事がselectMove内で確認済み
+		
 		f.setChip(selectted_point,player1->getPlayerType() );
-	//	cout<<"k1"<<endl;
 
 		if(f.checkVictory(selectted_point))break;
-	//	cout<<"k2"<<endl;
 		f.print();
 
 		selectted_point = player2->selectMove(f);
+		//このselectted_pointはおける位置である事がselectMove内で確認済み
 
 		f.setChip(selectted_point,player2->getPlayerType() );
 
