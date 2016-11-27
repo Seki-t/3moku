@@ -7,7 +7,8 @@
 class Printer{
 	public:
 		virtual void operator ()(vector<vector<Chip>>& ban) = 0;
+		virtual ~Printer(){}
 
-}
+};
 
 #endif

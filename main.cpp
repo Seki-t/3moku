@@ -1,28 +1,27 @@
 #include<iostream>
 #include"Position.h"
-#include"Field.h"
+#include"OseroField.hpp"
 #include"RandomAIPlayer.h"
 #include"HumanPlayer.h"
 #include"Chip.h"
+#include"CUIPrinter.hpp"
 
-using namespace std;
-
-#define Point Position<int>
+//#define Point Position<int>
 
 
 int main(){
-	Field f{9,5};
-	Player* player1 = new RandomAIPlayer(ChipType::maru);
-	Player* player2 = new RandomAIPlayer(ChipType::batu);
+	OseroField f(new CUIPrinter("OSERO"));
+	Player* player1 = new HumanPlayer(ChipType::maru);
+	Player* player2 = new HumanPlayer(ChipType::batu);
 
 	f.print();
-	
+
 	while(1){
 		Point selectted_point;
 
 		selectted_point = player1->selectMove(f);
 		//このselectted_pointはおける位置である事がselectMove内で確認済み
-		
+
 		f.setChip(selectted_point,player1->getPlayerType() );
 
 		if(f.checkVictory(selectted_point))break;

@@ -1,7 +1,7 @@
 #ifndef CUI_PRINTER_HPP
 #define CUI_PRINTER_HPP
 #include<iostream>
-#include"Printer.h"
+#include"Printer.hpp"
 #include<algorithm>
 
 class CUIPrinter : public Printer{
@@ -17,7 +17,7 @@ class CUIPrinter : public Printer{
 			if(game_type == "OSERO"){
 
 				for_each(ban.begin(),ban.end(),[&](vector<Chip>& line){
-						for(int i=0;i<size;i++)cout<<" ---";
+						for(int i = 0; i < line.size(); i++)cout<<" ---";
 						cout<<endl;
 						for_each(line.begin(),line.end(),[&](Chip& c){
 								cout<<"| ";
@@ -26,23 +26,25 @@ class CUIPrinter : public Printer{
 								});
 						cout<<"|"<<endl;
 						});
-				for(int i=0;i<size;i++)cout<<" ---";
+
+				for(auto i=0;i<ban.size();i++)cout<<" ---";
 				cout<<endl;
 			}
-			else if(game_type == "GOMOKU"){
+			else if(game_type == "GOMOKU")
+			{
 
-				for(int j=0;j<size;j++){
+				for(auto j=0;j<ban.size();j++){
 
-					for(int i=0;i<size;i++){
+					for(auto i=0;i<ban.size();i++){
 
 						ban[j][i].print();
-						if(i < size-1)cout<<"---";
+						if(i < ban.size()-1)cout<<"---";
 
 					}
-					if(j < size-1){
+					if(j < ban.size()-1){
 						cout<<" "<<endl;
 
-						for(int i=0;i<size ;i++)cout<<"|   ";
+						for(auto i=0;i<ban.size() ;i++)cout<<"|   ";
 
 						cout<<endl;
 					}

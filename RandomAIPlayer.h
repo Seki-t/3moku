@@ -8,32 +8,30 @@
 #include<iostream>
 #include<random>
 
-using namespace std;
-
 class RandomAIPlayer : public Player{
 
 	protected:
-	
-	std::mt19937 mt;
-	std::uniform_int_distribution<> rand1;
+
+		std::mt19937 mt;
+		std::uniform_int_distribution<> rand1;
 	public:
 
 		RandomAIPlayer(ChipType t) :
 			Player{t},
 			rand1{0,8}
 		{
-	random_device rnd;
+			random_device rnd;
 			mt.seed(rnd());
 		}
 
 
 		virtual Point selectMove(Field& ban){
-			Point selectted_point;
+			Point selected_point;
 			while(1){
-				selectted_point = Point{rand1(mt),rand1(mt)};
-				if( ban.canPutChip(selectted_point) )break;
+				selected_point = Point{rand1(mt),rand1(mt)};
+				if( ban.canPutChip(selected_point) )break;
 			}
-			return selectted_point;
+			return selected_point;
 		} 
 
 };

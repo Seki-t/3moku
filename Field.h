@@ -4,7 +4,7 @@
 #include"Chip.h"
 #include<vector>
 #include<algorithm>
-#include"Printer.hpp"
+#include"CUIPrinter.hpp"
 class Field{
 	protected:
 
