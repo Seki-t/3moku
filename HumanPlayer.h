@@ -44,8 +44,7 @@ class HumanPlayer : public Player{
 
 			while(1){
 				selectted_point = getKeyInput();
-				cout<<"select"<<endl;
-				if( ban.canPutChip(selectted_point) )break;
+				if( ban.canPutChip(selectted_point,player_type) )break;
 
 				cout<<"You Can't put chip on that point! Once again!"<<endl;
 

@@ -7,7 +7,6 @@
 #include"Field.h"
 #include<iostream>
 #include<random>
-
 class RandomAIPlayer : public Player{
 
 	protected:
@@ -18,7 +17,7 @@ class RandomAIPlayer : public Player{
 
 		RandomAIPlayer(ChipType t) :
 			Player{t},
-			rand1{0,8}
+			rand1{0,1000}
 		{
 			random_device rnd;
 			mt.seed(rnd());
@@ -27,10 +26,28 @@ class RandomAIPlayer : public Player{
 
 		virtual Point selectMove(Field& ban){
 			Point selected_point;
+			int selecting;
+
 			while(1){
-				selected_point = Point{rand1(mt),rand1(mt)};
-				if( ban.canPutChip(selected_point) )break;
+
+				vector<Point>* can_put_chip_positions = ban.getEnableSelects();
+				
+				int enable_select_num = can_put_chip_positions->size();
+				
+				if(enable_select_num == 0)return Point{-1,-1};	
+				
+				selecting = rand1(mt) % enable_select_num;
+			
+				selected_point = (*can_put_chip_positions)[selecting];
+				cout<<"select player ";
+				if(player_type == ChipType::maru)cout<<"maru";
+				else cout<<"batu ";
+
+				cout<<selected_point.x<<" "<<selected_point.y<<endl;	
+				if( ban.canPutChip(selected_point,player_type) )break;
+				cout<<"cannot put chip"<<endl;	
 			}
+
 			return selected_point;
 		} 
 

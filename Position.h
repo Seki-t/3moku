@@ -36,6 +36,9 @@ struct Position{
 		return *this;
 	}
 
+	bool operator !=(const Position& pos){
+		return ((x != pos.x) || (y != pos.y) );
+	}
 	T Get_Norm(){
 		return sqrt(x*x + y*y);
 	}

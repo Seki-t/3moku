@@ -4,15 +4,37 @@
 #include"Chip.h"
 #include<vector>
 #include<algorithm>
+#include"Position.h"
 #include"CUIPrinter.hpp"
 class Field{
 	protected:
 
+		vector<Point> can_put_chip_positions;
 		vector<vector<Chip>> ban;
 		int size;
 		ChipType victory_user_type;
 		
 		Printer* printer;
+		
+		int batu_num,maru_num;
+
+		void updateChipNum(){
+
+			maru_num = 0;
+			batu_num = 0;
+
+			for(auto& line:ban){
+				for(auto& s:line){
+
+					if(s == ChipType::maru){
+						maru_num++;
+					}else if(s == ChipType::batu){
+						batu_num++;
+					}
+				}
+			}
+		}
+
 	public:
 		
 		Field(int field_size,Printer* p){
@@ -20,14 +42,22 @@ class Field{
 			for(auto &s:ban){
 				s.resize(field_size);
 			}
+
 			size = field_size;
 			printer = p;
+
+			maru_num = 0;
+			batu_num = 0;
 		}
 
 		virtual ~Field(){
+			cout<<"de"<<endl;
 			delete printer;
 		}
 
+		vector<Point>* getEnableSelects(){
+			return &can_put_chip_positions;
+		}
 		virtual bool checkVictory(Point selected_point) = 0;
 		virtual int evaluteBan(Point selected_point) = 0;
 
@@ -48,7 +78,7 @@ class Field{
 		}
 
 
-		virtual bool canPutChip(Point selected_point)const{
+		virtual bool canPutChip(Point selected_point,ChipType c_type)const{
 			return (ban[selected_point.x][selected_point.y] == Chip{ChipType::none} ) && isPointInBan(selected_point);
 		}
 
@@ -88,6 +118,10 @@ class Field{
 					break;
 			}
 			return "Error";
+		}
+
+		Point getResult(){
+			return Point{maru_num,batu_num};
 		}
 
 };

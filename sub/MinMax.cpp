@@ -14,9 +14,15 @@ struct GraphNode{
 
 #define Nodei GraphNode<int>
 
-int evaluteBan(Nodei& node){
-		
+int evaluteBan(Field &ban){
 
+	int 
+
+
+
+
+	return 0;		
+}
 
 
 //turn,depth は0スタート
