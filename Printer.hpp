@@ -1,7 +1,7 @@
 #ifndef PRINTER_HPP
 #define PRINTER_HPP
 #include<vector>
-#include"Chip.h"
+#include"Chip.hpp"
 
 
 class Printer{

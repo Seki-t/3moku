@@ -1,5 +1,5 @@
 #pragma once
-#include"Chip.h"
+#include"Chip.hpp"
 #include<vector>
 
 static const int zyoban_value_data[8][8] = { 30,-10, 0,-1,-1, 0,-10, 30,

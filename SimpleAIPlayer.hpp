@@ -1,10 +1,10 @@
 #ifndef SIMPLE_AI_PLAYER_H
 #define SIMPLE_AI_PLAYER_H
 
-#include"Player.h"
-#include"Chip.h"
-#include"Position.h"
-#include"Field.h"
+#include"Player.hpp"
+#include"Chip.hpp"
+#include"Position.hpp"
+#include"Field.hpp"
 #include<iostream>
 #include<random>
 #include"OseroFieldEvalData.hpp"

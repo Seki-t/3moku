@@ -1,9 +1,9 @@
 #include<iostream>
-#include"Position.h"
+#include"Position.hpp"
 #include"OseroField.hpp"
-#include"RandomAIPlayer.h"
-#include"HumanPlayer.h"
-#include"Chip.h"
+#include"RandomAIPlayer.hpp"
+#include"HumanPlayer.hpp"
+#include"Chip.hpp"
 #include"CUIPrinter.hpp"
 #include"SimpleAIPlayer.hpp"
 //#define Point Position<int>
