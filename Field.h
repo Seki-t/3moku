@@ -13,9 +13,9 @@ class Field{
 		vector<vector<Chip>> ban;
 		int size;
 		ChipType victory_user_type;
-		
+
 		Printer* printer;
-		
+
 		int batu_num,maru_num;
 
 		void updateChipNum(){
@@ -36,7 +36,7 @@ class Field{
 		}
 
 	public:
-		
+
 		Field(int field_size,Printer* p){
 			ban.resize(field_size);
 			for(auto &s:ban){
@@ -58,6 +58,7 @@ class Field{
 		vector<Point>* getEnableSelects(){
 			return &can_put_chip_positions;
 		}
+
 		virtual bool checkVictory(Point selected_point) = 0;
 		virtual int evaluteBan(Point selected_point) = 0;
 
@@ -87,11 +88,11 @@ class Field{
 
 			int link_count = 0;
 			const Chip selecting_chip = ban[selected_point.x][selected_point.y];
-			
+
 			Point checking_point = selected_point;
 			while(1){
 				link_count++;
-				
+
 				checking_point += check_direction;
 				if( !isPointInBan(checking_point) ) break;
 				if(selecting_chip != ban[checking_point.x][checking_point.y] )break;
@@ -99,7 +100,7 @@ class Field{
 
 			return link_count;
 		}
-	
+
 
 		string victoryUser(){
 			//to do:make game manager class
@@ -124,6 +125,10 @@ class Field{
 			return Point{maru_num,batu_num};
 		}
 
+
+		vector<vector<Chip>>* getBan(){
+			return &ban;
+		}
 };
 
 

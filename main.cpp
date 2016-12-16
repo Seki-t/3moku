@@ -5,18 +5,18 @@
 #include"HumanPlayer.h"
 #include"Chip.h"
 #include"CUIPrinter.hpp"
-
+#include"SimpleAIPlayer.hpp"
 //#define Point Position<int>
 
 
 int main(){
 	int v1_num = 0,v2_num = 0;
 	
-	for(int i = 0; i < 1000;i++){
+	for(int i = 0; i < 1;i++){
 		cout<<"battle "<<i<<endl;
 		OseroField f(new CUIPrinter("OSERO"));
 		Player* player1 = new RandomAIPlayer(ChipType::maru);
-		Player* player2 = new RandomAIPlayer(ChipType::batu);
+		Player* player2 = new SimpleAIPlayer(ChipType::batu);
 
 		f.print();
 
