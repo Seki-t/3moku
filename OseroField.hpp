@@ -6,47 +6,46 @@
 class OseroField : public Field{
 	private:
 
-
-		void updateChipSides(Point selected_point){
-
-			const vector<Point> surrounding_points = {{-1,0},{-1,-1},{0,-1},{1,-1},{1,0},{1,1},{0,1},{-1,1}};
-
-			for(auto& orient:surrounding_points){
-
-				Point scanning_point = selected_point;	
-
-				int linking_number = 0;
-
-				scanning_point.x += orient.x;
-				scanning_point.y += orient.y;
-
-				if( isPointInBan(scanning_point) ){
-
-					if( board[scanning_point.x][scanning_point.y].type == board[selected_point.x][selected_point.y].opType() ){
-
-						while(1){
-							linking_number++;
-							scanning_point.x += orient.x;
-							scanning_point.y += orient.y;
-							if( !isPointInBan(scanning_point) )break;
-
-							if( board[scanning_point.x][scanning_point.y] == board[selected_point.x][selected_point.y] ){
-								while(linking_number > 0){
-									linking_number--;
-
-									scanning_point.x -= orient.x;
-									scanning_point.y -= orient.y;
-									board[scanning_point.x][scanning_point.y] = board[selected_point.x][selected_point.y];
-								}
-								break;
-							}
-						}
-					}
-				}
-
-			}
-
-		}
+		// void updateChipSides(Point selected_point){
+        //
+		// 	const vector<Point> surrounding_points = {{-1,0},{-1,-1},{0,-1},{1,-1},{1,0},{1,1},{0,1},{-1,1}};
+        //
+		// 	for(auto& orient:surrounding_points){
+        //
+		// 		Point scanning_point = selected_point;	
+        //
+		// 		int linking_number = 0;
+        //
+		// 		scanning_point.x += orient.x;
+		// 		scanning_point.y += orient.y;
+        //
+		// 		if( isPointInBan(scanning_point) ){
+        //
+		// 			if( board[scanning_point.x][scanning_point.y].type == board[selected_point.x][selected_point.y].opType() ){
+        //
+		// 				while(1){
+		// 					linking_number++;
+		// 					scanning_point.x += orient.x;
+		// 					scanning_point.y += orient.y;
+		// 					if( !isPointInBan(scanning_point) )break;
+        //
+		// 					if( board[scanning_point.x][scanning_point.y] == board[selected_point.x][selected_point.y] ){
+		// 						while(linking_number > 0){
+		// 							linking_number--;
+        //
+		// 							scanning_point.x -= orient.x;
+		// 							scanning_point.y -= orient.y;
+		// 							board[scanning_point.x][scanning_point.y] = board[selected_point.x][selected_point.y];
+		// 						}
+		// 						break;
+		// 					}
+		// 				}
+		// 			}
+		// 		}
+        //
+		// 	}
+        //
+		// }
 
 	public:
 
@@ -74,7 +73,7 @@ class OseroField : public Field{
 			if(maru_num == batu_num){
 				victory_user_type = ChipType::none;
 			}
-			return (maru_num + batu_num) == board.size() * board.size() ;
+			return (maru_num + batu_num) == static_cast<int>(board.size() * board.size()) ;
 		}
 
 
@@ -188,37 +187,6 @@ class OseroField : public Field{
 				if(board[selected_point.x][selected_point.y].enable_revers_chips_num[i] > 0)return true;
 			}
 			return false;
-			// const orient_log_key[8] = {1,2,4,8,16,32,64,128};	
-			//
-			//
-			// const vector<Point> SurroundingPoints = {{-1,0},{-1,-1},{0,-1},{1,-1},{1,0},{1,1},{0,1},{-1,1}};
-			//
-			// if(!isPointInBan(selected_point))return false;
-			// if(board[selected_point.x][selected_point.y] != ChipType::none)return false;			
-			// for(auto& orient:SurroundingPoints){
-			//
-			//
-			// 	Point scanning_point = selected_point;	
-			// 	scanning_point.x += orient.x;
-			// 	scanning_point.y += orient.y;
-			// 	if( !isPointInBan(scanning_point) )break;
-			//
-			// 	if(board[scanning_point.x][scanning_point.y].type == opType(c_type) ){
-			//
-			// 		while(1){
-			// 			scanning_point.x += orient.x;
-			// 			scanning_point.y += orient.y;
-			// 			if( !isPointInBan(scanning_point) )break;
-			//
-			//
-			// 			if(board[scanning_point.x][scanning_point.y] == c_type ){
-			// 				return true;
-			// 			}
-			// 		}
-			// 	}
-			//
-			// }
-			// return false;
 		}
 
 		//
@@ -226,11 +194,10 @@ class OseroField : public Field{
 			board[selected_point.x][selected_point.y].setType(c_type);
 
 			//盤の白黒の更新
-			//updateChipSides(selected_point);
 			ReverseChips(selected_point,c_type);
 			BanStateUpdate(opType(c_type));
 		}
-		
+
 
 };
 #endif

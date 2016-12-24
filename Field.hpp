@@ -129,6 +129,8 @@ class Field{
 		vector<vector<Chip>>* getBan(){
 			return &board;
 		}
+
+
 };
 
 

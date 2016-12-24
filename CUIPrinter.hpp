@@ -17,7 +17,7 @@ class CUIPrinter : public Printer{
 			if(game_type == "OSERO"){
 
 				for_each(ban.begin(),ban.end(),[&](vector<Chip>& line){
-						for(int i = 0; i < line.size(); i++)cout<<" ---";
+						for(size_t i = 0; i < line.size(); i++)cout<<" ---";
 						cout<<endl;
 						for_each(line.begin(),line.end(),[&](Chip& c){
 								cout<<"| ";
@@ -27,15 +27,15 @@ class CUIPrinter : public Printer{
 						cout<<"|"<<endl;
 						});
 
-				for(auto i=0;i<ban.size();i++)cout<<" ---";
+				for(size_t i=0;i<ban.size();i++)cout<<" ---";
 				cout<<endl;
 			}
 			else if(game_type == "GOMOKU")
 			{
 
-				for(auto j=0;j<ban.size();j++){
+				for(size_t j=0;j<ban.size();j++){
 
-					for(auto i=0;i<ban.size();i++){
+					for(size_t i=0;i<ban.size();i++){
 
 						ban[j][i].print();
 						if(i < ban.size()-1)cout<<"---";
@@ -44,7 +44,7 @@ class CUIPrinter : public Printer{
 					if(j < ban.size()-1){
 						cout<<" "<<endl;
 
-						for(auto i=0;i<ban.size() ;i++)cout<<"|   ";
+						for(size_t i=0;i<ban.size() ;i++)cout<<"|   ";
 
 						cout<<endl;
 					}
