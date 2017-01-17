@@ -6,46 +6,6 @@
 class OseroField : public Field{
 	private:
 
-		// void updateChipSides(Point selected_point){
-        //
-		// 	const vector<Point> surrounding_points = {{-1,0},{-1,-1},{0,-1},{1,-1},{1,0},{1,1},{0,1},{-1,1}};
-        //
-		// 	for(auto& orient:surrounding_points){
-        //
-		// 		Point scanning_point = selected_point;	
-        //
-		// 		int linking_number = 0;
-        //
-		// 		scanning_point.x += orient.x;
-		// 		scanning_point.y += orient.y;
-        //
-		// 		if( isPointInBan(scanning_point) ){
-        //
-		// 			if( board[scanning_point.x][scanning_point.y].type == board[selected_point.x][selected_point.y].opType() ){
-        //
-		// 				while(1){
-		// 					linking_number++;
-		// 					scanning_point.x += orient.x;
-		// 					scanning_point.y += orient.y;
-		// 					if( !isPointInBan(scanning_point) )break;
-        //
-		// 					if( board[scanning_point.x][scanning_point.y] == board[selected_point.x][selected_point.y] ){
-		// 						while(linking_number > 0){
-		// 							linking_number--;
-        //
-		// 							scanning_point.x -= orient.x;
-		// 							scanning_point.y -= orient.y;
-		// 							board[scanning_point.x][scanning_point.y] = board[selected_point.x][selected_point.y];
-		// 						}
-		// 						break;
-		// 					}
-		// 				}
-		// 			}
-		// 		}
-        //
-		// 	}
-        //
-		// }
 
 	public:
 

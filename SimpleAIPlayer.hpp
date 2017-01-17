@@ -17,20 +17,19 @@ class SimpleAIPlayer : public Player{
 		std::uniform_int_distribution<> rand1;
 		
 		//このboard_bufは探索深さが必要数となるSimpleは探索深さ1なので1つで良い
-		vector<vector<Chip>> board_buf;
-
+		Field *field_buf;
 
 
 	public:
 
-		SimpleAIPlayer(ChipType t) :
+		SimpleAIPlayer(ChipType t,Field* _field) :
 			Player{t},
+			field_buf{_field},
 			rand1{0,1000}
 		{
 			random_device rnd;
 			mt.seed(rnd());
 		}
-
 
 		virtual Point selectMove(Field& field){
 				
@@ -59,8 +58,13 @@ class SimpleAIPlayer : public Player{
 				
 				//最大評価値の位置を探索するループ
 				for(int i = 0; i < enable_select_num; i++){
-						
-					board_buf = *now_board_state;
+					
+					//現在のボード状態をコピー
+					*board_buf = *now_board_state;
+					
+					//候補手を一つ実行。置いた時の盤面変化を行う	
+					(*board_buf)[(*can_put_chip_positions)[i];
+
 
 					int banmen_value = OseroFieldEvalData::evalBan(field.getBan(), player_type );
 					
