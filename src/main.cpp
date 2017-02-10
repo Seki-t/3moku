@@ -18,7 +18,7 @@ int main(){
 		Player* player1 = new RandomAIPlayer(ChipType::maru);
 		Player* player2 = new SimpleAIPlayer(ChipType::batu,new OseroField(new CUIPrinter("OSERO")));
 
-		f.print();
+		//f.print();
 
 		while(1){
 			Point selectted_point;
@@ -34,7 +34,7 @@ int main(){
 			}
 
 			if(f.checkVictory(selectted_point))break;
-					f.print();
+				//	f.print();
 
 			selectted_point = player2->selectMove(f);
 			//このselectted_pointはおける位置である事がselectMove内で確認済み
@@ -47,12 +47,12 @@ int main(){
 			}
 
 			if(f.checkVictory(selectted_point))break;
-					f.print();
+			//		f.print();
 		}
-		f.print();
-		cout<<"Game Set!"<<endl;
+		//f.print();
+		//cout<<"Game Set!"<<endl;
 		Point result = f.getResult();
-		cout<<"Player1 vs Player2"<<endl;
+	//	cout<<"Player1 vs Player2"<<endl;
 		cout<<result.x<<" : "<<result.y<<endl;
 		if(result.x > result.y )v1_num++;
 		if(result.x < result.y)v2_num++;

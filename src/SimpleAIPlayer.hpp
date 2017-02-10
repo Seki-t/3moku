@@ -68,7 +68,7 @@ class SimpleAIPlayer : public Player{
 					field_buf->setChip( (*can_put_chip_positions)[i], player_type);
 
 					int banmen_value = OseroFieldEvalData::evalBan(field_buf->getBan(), player_type );
-					cout<<"i = "<<i<<" ,selected_point = "<<(*can_put_chip_positions)[i].x<<","<<(*can_put_chip_positions)[i].y<<", value = "<<banmen_value<<endl;				
+					//cout<<"i = "<<i<<" ,selected_point = "<<(*can_put_chip_positions)[i].x<<","<<(*can_put_chip_positions)[i].y<<", value = "<<banmen_value<<endl;				
 					if(max_banmen_value < banmen_value){
 						max_banmen_value = banmen_value;
 						max_banmen_index = i;
@@ -78,13 +78,13 @@ class SimpleAIPlayer : public Player{
 				//評価値最大のものを選ぶ	
 				selected_point = (*can_put_chip_positions)[max_banmen_index];
 
-				cout<<"select player ";
-				if(player_type == ChipType::maru)cout<<"maru ";
-				else cout<<"batu ";
+				//cout<<"select player ";
+				// if(player_type == ChipType::maru)cout<<"maru ";
+				// else cout<<"batu ";
 
-				cout<<selected_point.x<<" "<<selected_point.y<<endl;	
+				//cout<<selected_point.x<<" "<<selected_point.y<<endl;	
 				if( field.canPutChip(selected_point,player_type) )break;
-				cout<<"cannot put chip"<<endl;	
+				//cout<<"cannot put chip"<<endl;	
 			}
 
 			return selected_point;
