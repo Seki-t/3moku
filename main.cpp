@@ -16,7 +16,7 @@ int main(){
 		cout<<"battle "<<i<<endl;
 		OseroField f(new CUIPrinter("OSERO"));
 		Player* player1 = new RandomAIPlayer(ChipType::maru);
-		Player* player2 = new SimpleAIPlayer(ChipType::batu);
+		Player* player2 = new SimpleAIPlayer(ChipType::batu,new OseroField(new CUIPrinter("OSERO")));
 
 		f.print();
 

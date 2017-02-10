@@ -30,6 +30,12 @@ class SimpleAIPlayer : public Player{
 			random_device rnd;
 			mt.seed(rnd());
 		}
+		
+		// virtual ~SimpleAIPlayer(){
+		// 	cout<<"dedede"<<endl;
+		// 	delete field_buf;
+		// }
+
 
 		virtual Point selectMove(Field& field){
 				
@@ -46,28 +52,23 @@ class SimpleAIPlayer : public Player{
 				vector<Point>* can_put_chip_positions = field.getEnableSelects();
 				int enable_select_num = can_put_chip_positions->size();
 				
-				//現在のboardのポインタを取得
-				vector<vector<Chip>> *now_board_state = field.getBan();
-
 				//おける数ゼロなら関数を抜けて、手渡しする
 				if(enable_select_num == 0)return Point{-1,-1};	
 				
-				
-				int max_banmen_value = 1000;
+				int max_banmen_value = -1000;
 				int max_banmen_index = 0;
 				
 				//最大評価値の位置を探索するループ
 				for(int i = 0; i < enable_select_num; i++){
 					
-					//現在のボード状態をコピー
-					*board_buf = *now_board_state;
+					//現在のフィールド状態をコピー
+					*field_buf = field;
 					
 					//候補手を一つ実行。置いた時の盤面変化を行う	
-					(*board_buf)[(*can_put_chip_positions)[i];
+					field_buf->setChip( (*can_put_chip_positions)[i], player_type);
 
-
-					int banmen_value = OseroFieldEvalData::evalBan(field.getBan(), player_type );
-					
+					int banmen_value = OseroFieldEvalData::evalBan(field_buf->getBan(), player_type );
+					cout<<"i = "<<i<<" ,selected_point = "<<(*can_put_chip_positions)[i].x<<","<<(*can_put_chip_positions)[i].y<<", value = "<<banmen_value<<endl;				
 					if(max_banmen_value < banmen_value){
 						max_banmen_value = banmen_value;
 						max_banmen_index = i;
