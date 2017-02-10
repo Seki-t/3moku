@@ -21,6 +21,12 @@ public:
 
 		Chip(ChipType t) :
 			type{t} {}
+	
+
+		void clear(){
+			type = ChipType::none;
+			for(int i = 0; i < 8; i++)enable_revers_chips_num[i]=0;
+		}
 
 		void print(){
 			int a = 0;

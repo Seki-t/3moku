@@ -11,8 +11,8 @@
 
 int main(){
 	int v1_num = 0,v2_num = 0;
-	
-	for(int i = 0; i < 1;i++){
+	for(int i = 0; i < 1000;i++){
+		int pass_count = 0;	
 		cout<<"battle "<<i<<endl;
 		OseroField f(new CUIPrinter("OSERO"));
 		Player* player1 = new RandomAIPlayer(ChipType::maru);
@@ -43,10 +43,11 @@ int main(){
 				f.setChip(selectted_point,player2->getPlayerType() );
 			}else{
 				cout<<"Pass"<<endl;
+				pass_count++;
 				f.BanStateUpdate(opType(player2->getPlayerType()));
 			}
 
-			if(f.checkVictory(selectted_point))break;
+			if(f.checkVictory(selectted_point) || (pass_count > 1) )break;
 			//		f.print();
 		}
 		//f.print();

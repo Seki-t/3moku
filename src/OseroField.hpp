@@ -11,6 +11,12 @@ class OseroField : public Field{
 
 		OseroField(Printer* p):Field(8,p){
 
+			for(auto& one_line:board){
+				for(auto& chip:one_line){
+					chip.clear();
+				}
+			}
+
 			board[3][4] = ChipType::batu;
 			board[4][4] = ChipType::maru;
 			board[3][3] = ChipType::maru;

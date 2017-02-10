@@ -39,13 +39,13 @@ class RandomAIPlayer : public Player{
 				selecting = rand1(mt) % enable_select_num;
 
 				selected_point = (*can_put_chip_positions)[selecting];
-				cout<<"select player ";
-				if(player_type == ChipType::maru)cout<<"maru ";
-				else cout<<"batu ";
+				//cout<<"select player ";
+				//if(player_type == ChipType::maru)cout<<"maru ";
+				//else cout<<"batu ";
 
-				cout<<selected_point.x<<" "<<selected_point.y<<endl;	
-				if( ban.canPutChip(selected_point,player_type) )break;
-				cout<<"cannot put chip"<<endl;	
+				// cout<<selected_point.x<<" "<<selected_point.y<<endl;	
+				 if( ban.canPutChip(selected_point,player_type) )break;
+				// cout<<"cannot put chip"<<endl;	
 			}
 
 			return selected_point;
