@@ -7,6 +7,7 @@
 #include"CUIPrinter.hpp"
 #include"SimpleAIPlayer.hpp"
 
+
 int main(){
 
 	int v1_num = 0,v2_num = 0;
